@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: celery-beat 
+  name:  celery-beat
+  namespace: notification-canada-ca
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: celery-beat 
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: celery-beat
+    spec:
+      initContainers:
+        - name: init-postgres
+          image: alpine
+          command:
+            [
+              "sh",
+              "-c",
+              "until nslookup postgres.notification-canada-ca.svc.cluster.local; do echo waiting for postgres; sleep 2; done;",
+            ]
+      containers:
+        - image: api
+          imagePullPolicy: Always
+          name: celery-beat
+          env:
+            - name: ADMIN_BASE_URL
+              value: https://$(BASE_DOMAIN)
+            - name: NOTIFY_EMAIL_DOMAIN
+              value: '$(BASE_DOMAIN)'
+            - name: NOTIFY_ENVIRONMENT
+              value: '$(ENVIRONMENT)'
+            - name: SQLALCHEMY_DATABASE_URI
+              value: 'postgresql://postgres@postgres.notification-canada-ca.svc.cluster.local:5432/notification_api'
+          command: ["/bin/sh"]
+          args: ["-c", "sh /app/scripts/run_celery_beat.sh"]
+          resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

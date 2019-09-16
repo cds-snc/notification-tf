@@ -1,0 +1,21 @@
+resources:
+  - ../../base
+  - config-map.yaml
+  - traefik-ingress-service.yaml
+  - traefik-ingress-controller-deployment.yaml
+
+vars:
+  - name: BASE_DOMAIN
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.base_domain
+  - name: ENVIRONMENT
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.environment

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: application-config
+  namespace: notification-canada-ca
+data:
+  base_domain: minikube
+  environment: development

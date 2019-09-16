@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api 
+  name:  api
+  namespace: notification-canada-ca
+spec:
+  selector:
+    matchLabels:
+      app: api 
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      initContainers:
+        - name: init-postgres
+          image: alpine
+          command:
+            [
+              "sh",
+              "-c",
+              "until nslookup postgres.notification-canada-ca.svc.cluster.local; do echo waiting for postgres; sleep 2; done;",
+            ]
+        - name: init-db
+          image: api
+          command: ["/bin/sh", "-c", "flask db upgrade"]
+          env:
+            - name: NOTIFY_ENVIRONMENT
+              value: 'production'
+            - name: SQLALCHEMY_DATABASE_URI
+              value: 'postgresql://postgres@postgres.notification-canada-ca.svc.cluster.local:5432/notification_api'
+      containers:
+        - image: api
+          imagePullPolicy: Always
+          name: api 
+          env:
+            - name: ADMIN_BASE_URL
+              value: https://$(BASE_DOMAIN)
+            - name: NOTIFY_EMAIL_DOMAIN
+              value: '$(BASE_DOMAIN)'
+            - name: NOTIFY_ENVIRONMENT
+              value: '$(ENVIRONMENT)'
+            - name: SQLALCHEMY_DATABASE_URI
+              value: 'postgresql://postgres@postgres.notification-canada-ca.svc.cluster.local:5432/notification_api'
+            - name: STATSD_HOST
+              value: statsd.notification-canada-ca.svc.cluster.local
+            - name: FIDO2_DOMAIN
+              value: '$(BASE_DOMAIN)'
+            - name: DOCUMENT_DOWNLOAD_API_HOST
+              value: 'http://document-download-api.notification-canada-ca.svc.cluster.local:7000'
+          resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

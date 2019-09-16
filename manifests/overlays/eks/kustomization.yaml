@@ -1,0 +1,37 @@
+resources:
+  - ../../base
+  - storage-class-default.yaml
+  - config-map.yaml
+  - certs-claim.yaml
+  - traefik-ingress-service.yaml
+  - traefik-ingress-controller-deployment.yaml
+patches:
+  - postgres-claim.yaml
+
+images:
+- name: admin
+  newName: gcr.io/notification-canada-ca/admin
+- name: api
+  newName: gcr.io/notification-canada-ca/api
+- name: document-download-api
+  newName: gcr.io/notification-canada-ca/document-download-api
+- name: document-download-frontend
+  newName: gcr.io/notification-canada-ca/document-download-frontend
+- name: statsd
+  newName: gcr.io/notification-canada-ca/statsd
+
+vars:
+  - name: BASE_DOMAIN
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.base_domain
+  - name: ENVIRONMENT
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.environment

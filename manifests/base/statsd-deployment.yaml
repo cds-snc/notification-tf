@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: statsd 
+  name:  statsd
+  namespace: notification-canada-ca
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: statsd 
+  template:
+    metadata:
+      labels:
+        app: statsd
+    spec:
+      containers:
+        - image: statsd
+          imagePullPolicy: Always
+          name: statsd 
+          resources: {}
+          command: ["/bin/bash", "-ec", "service stackdriver-agent start && tail -f /dev/null"]
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

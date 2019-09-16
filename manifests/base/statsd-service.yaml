@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: statsd
+  name: statsd
+  namespace: notification-canada-ca
+spec:
+  type: NodePort
+  ports:
+    - port: 8125
+      targetPort: 8125
+      protocol: UDP
+  selector:
+    app: statsd
+
