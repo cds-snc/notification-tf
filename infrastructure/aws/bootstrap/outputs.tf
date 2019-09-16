@@ -7,7 +7,7 @@ output "key" {
 }
 
 output "region" {
-  value = format("\"%s\"", "ca-central-1")
+  value = format("\"%s\"", "us-east-1")
 }
 
 output "shared_credentials_file" {
