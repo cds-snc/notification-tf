@@ -7,9 +7,9 @@ resource "aws_ecr_repository" "admin_repository" {
 }
 
 resource "aws_ecr_repository" "document_api_repository" {
-  name = "${var.name}/document-api"
+  name = "${var.name}/document-download-api"
 }
 
 resource "aws_ecr_repository" "document_frontend_repository" {
-  name = "${var.name}/document-frontend"
+  name = "${var.name}/document-download-frontend"
 }

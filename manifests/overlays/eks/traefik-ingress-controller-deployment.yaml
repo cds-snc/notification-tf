@@ -32,7 +32,7 @@ spec:
         - --acme.httpchallenge
         - --acme.httpchallenge.entrypoint=http
         - --tracing=true
-        image: traefik
+        image: traefik:1.7
         name: traefik-ingress-lb
         ports:
         - containerPort: 80

@@ -10,15 +10,15 @@ patches:
 
 images:
 - name: admin
-  newName: gcr.io/notification-canada-ca/admin
+  newName: 241785157803.dkr.ecr.us-east-1.amazonaws.com/notification-canada-ca/admin:a5e1c2c2033359834d24614aa482b202c9a5d651
 - name: api
-  newName: gcr.io/notification-canada-ca/api
+  newName: 241785157803.dkr.ecr.us-east-1.amazonaws.com/notification-canada-ca/api:0e6c4b229aaeb8bd35e36d1758b6c16d1d152f76
 - name: document-download-api
-  newName: gcr.io/notification-canada-ca/document-download-api
+  newName: 241785157803.dkr.ecr.us-east-1.amazonaws.com/notification-canada-ca/document-download-api:9fb0b24da6e6a9870254e2a9639901a1d351dfd8
 - name: document-download-frontend
-  newName: gcr.io/notification-canada-ca/document-download-frontend
+  newName: 241785157803.dkr.ecr.us-east-1.amazonaws.com/notification-canada-ca/document-download-frontend:7bc9b3175ba9aa34531bd74714d856620dda760f
 - name: statsd
-  newName: gcr.io/notification-canada-ca/statsd
+  newName: 241785157803.dkr.ecr.us-east-1.amazonaws.com/notification-canada-ca/statsd:latest
 
 vars:
   - name: BASE_DOMAIN

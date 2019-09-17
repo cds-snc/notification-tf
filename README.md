@@ -21,3 +21,13 @@ aws_secret_access_key=[SECRET]
 3. Adjust `aws/variables.tf` if needed and `make aws-deploy` to deploy the infrastructure needed for the project.
 
 4. Next create a kubernetes cluster in AWS. You can make changes to how the cluster is set up in `aws/eksctl.yaml`.  Run `make aws-eks`. You may need to wait up to 20 minutes.
+
+## To Document
+
+- Adjusting config maps
+- SNS callback
+- SES validation
+- CNAME configuration (Traefik restart)
+- Backing up the persistant volumes
+- Required IAM permissions
+- Outputting kustomize props file from output
