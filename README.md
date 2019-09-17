@@ -25,7 +25,7 @@ aws_secret_access_key=[SECRET]
 ## To Document
 
 - Adjusting config maps
-- SNS callback
+- SNS SMS Messaging
 - SES validation
 - CNAME configuration (Traefik restart)
 - Backing up the persistant volumes
