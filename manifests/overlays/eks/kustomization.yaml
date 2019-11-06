@@ -1,5 +1,7 @@
-resources:
+bases:
   - ../../base
+
+resources:
   - storage-class-default.yaml
   - certs-claim.yaml
   - bastion-claim.yaml
