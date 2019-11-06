@@ -32,4 +32,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
-          args: apply -n=notification-canada-ca --kubeconfig=/github/home/.kube/config -k manifests/overlays/eks
+          args: apply --kubeconfig=/github/home/.kube/config -k manifests/overlays/eks
