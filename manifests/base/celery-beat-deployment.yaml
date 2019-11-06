@@ -28,7 +28,7 @@ spec:
             [
               "sh",
               "-c",
-              "until nslookup postgres.notification-canada-ca.svc.cluster.local; do echo waiting for postgres; sleep 2; done;",
+              "until nslookup $(POSTGRES_HOST); do echo waiting for postgres; sleep 2; done;",
             ]
       containers:
         - image: api
@@ -42,7 +42,11 @@ spec:
             - name: NOTIFY_ENVIRONMENT
               value: '$(ENVIRONMENT)'
             - name: SQLALCHEMY_DATABASE_URI
-              value: 'postgresql://postgres@postgres.notification-canada-ca.svc.cluster.local:5432/notification_api'
+              value: '$(POSTGRES_SQL)'
+            - name: NOTIFICATION_QUEUE_PREFIX
+              value: 'eks-notification-canada-ca'
+            - name: STATSD_HOST
+              value: cloudwatch-agent-statsd.notification-canada-ca.svc.cluster.local
           command: ["/bin/sh"]
           args: ["-c", "sh /app/scripts/run_celery_beat.sh"]
           resources: {}

@@ -24,15 +24,3 @@ eks:
 
 delete-eks: 
 	kustomize build manifests/overlays/eks | kubectl delete -f -
-
-gke: 
-	kustomize build manifests/overlays/gke | kubectl apply -f -
-
-delete-gke: 
-	kustomize build manifests/overlays/gke | kubectl delete -f -
-
-minikube: 
-	kustomize build manifests/overlays/minikube | kubectl apply -f -
-
-delete-minikube: 
-	kustomize build manifests/overlays/minikube | kubectl delete -f -

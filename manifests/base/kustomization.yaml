@@ -1,21 +1,25 @@
 resources:
   - namespace.yaml 
-  - postgres-claim.yaml
-  - postgres-deployment.yaml
-  - postgres-service.yaml
+  - namespace-monitoring.yaml 
   - api-deployment.yaml
   - api-service.yaml
   - admin-deployment.yaml
   - admin-service.yaml
   - celery-beat-deployment.yaml
   - celery-deployment.yaml
+  - hasura-deployment.yaml
+  - hasura-service.yaml
   - document-download-api-deployment.yaml
   - document-download-api-service.yaml
   - document-download-frontend-deployment.yaml
   - document-download-frontend-service.yaml
-  - statsd-deployment.yaml
-  - statsd-service.yaml
+  - traefik-crd.yaml
+  - traefik-middleware.yaml
+  - traefik-tls.yaml
   - traefik-ingress-controller-cluster-role.yaml
   - traefik-ingress-controller-cluster-role-binding.yaml
   - traefik-ingress-controller-service-account.yaml
   - traefik-ingress.yaml
+  - prometheus-role.yaml
+  - prometheus-config-map.yaml
+  - prometheus-deployment.yaml

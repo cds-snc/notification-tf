@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: application-config
-  namespace: notification-canada-ca
-data:
-  base_domain: notification.alpha.cdssandbox.xyz
-  environment: production

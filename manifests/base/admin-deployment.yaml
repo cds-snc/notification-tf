@@ -42,8 +42,20 @@ spec:
             - name: NOTIFY_ENVIRONMENT
               value: '$(ENVIRONMENT)'
             - name: SQLALCHEMY_DATABASE_URI
-              value: 'postgresql://postgres@postgres.notification-canada-ca.svc.cluster.local:5432/notification_api'
+              value: '$(POSTGRES_SQL)'
           resources: {}
+          ports:
+            - containerPort: 6012
+          readinessProbe:
+            tcpSocket:
+              port: 6012
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          livenessProbe:
+            tcpSocket:
+              port: 6012
+            initialDelaySeconds: 3
+            periodSeconds: 3
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler

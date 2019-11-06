@@ -6,6 +6,6 @@ variable "domain" {
 
 variable "name" {
   description = "(Required) Specify the Service Name."
-  default     = "notification-canada-ca"
+  default     = "notification-alpha-canada-ca"
   type        = "string"
 }

@@ -2,7 +2,7 @@
 
 ## Deploying on AWS
 
-This is a siz step deployment. The first three steps include building your base infrastructure in AWS. Step four is provisioning a kubernetes cluster. Step five is deploying the application using kubernetes manifest files. You will need the following executables:
+This is a six step deployment. The first three steps include building your base infrastructure in AWS. Step four is provisioning a kubernetes cluster. Step five is deploying the application using kubernetes manifest files. You will need the following executables:
 
 - terraform
 - eksctl

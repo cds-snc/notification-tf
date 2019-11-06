@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bastion 
+  name:  bastion
+  namespace: notification-canada-ca
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bastion 
+  template:
+    metadata:
+      labels:
+        app: bastion
+    spec:
+      containers:
+        - image: bastion
+          imagePullPolicy: Always
+          name: bastion 
+          env:
+            - name: MFA_PROVIDER
+              value: "google-authenticator"
+            - name: SSH_AUDIT_ENABLED
+              value: "false"
+            - name: SLACK_ENABLED
+              value: "true"
+            - name: SLACK_WEBHOOK_URL	
+              value: "https://hooks.slack.com/services/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"
+            - name: SLACK_USERNAME
+              value: "Bastion"
+          resources: {}
+          volumeMounts:
+          - mountPath: /home
+            name: bastion-claim
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: bastion-claim
+        persistentVolumeClaim:
+          claimName: bastion-claim
+status: {}

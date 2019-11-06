@@ -1,37 +1,88 @@
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: traefik
-  name: traefik-ingress
+  name: traefik-http
   namespace: notification-canada-ca
 spec:
-  rules:
-    - host: $(BASE_DOMAIN)
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: admin
-              servicePort: 6012
-    - host: api.$(BASE_DOMAIN)
-      http: 
-        paths:         
-          - path: /
-            backend:
-              serviceName: api
-              servicePort: 6011
-    - host: document.$(BASE_DOMAIN)
-      http: 
-        paths:         
-          - path: /
-            backend:
-              serviceName: document-download-frontend
-              servicePort: 7001
-    - host: api.document.$(BASE_DOMAIN)
-      http: 
-        paths:         
-          - path: /
-            backend:
-              serviceName: document-download-api
-              servicePort: 7000
+  entryPoints:
+    - http
+  routes:
+  - match: HostRegexp(`{host:.+}`)
+    kind: Rule
+    priority: 1
+    middlewares:
+    - name: redirect-middleware
+    services:
+    - name: admin
+      port: 6012
+
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-https
+  namespace: notification-canada-ca
+spec:
+  entryPoints:
+    - https
+  tls:
+    certResolver: default
+    options:
+      name: default
+  routes:
+  - match: Host(`notification.alpha.canada.ca`)
+    kind: Rule
+    priority: 1
+    middlewares:
+    - name: security-headers
+    services:
+    - name: admin
+      port: 6012
+  - match: Host(`api.notification.alpha.canada.ca`)
+    kind: Rule
+    priority: 1
+    middlewares:
+    - name: security-headers
+    services:
+    - name: api
+      port: 6011
+  - match: Host(`document.notification.alpha.canada.ca`)
+    kind: Rule
+    priority: 1
+    middlewares:
+    - name: security-headers
+    services:
+    - name: document-download-frontend
+      port: 7001
+  - match: Host(`api.document.notification.alpha.canada.ca`)
+    kind: Rule
+    priority: 1
+    middlewares:
+    - name: security-headers
+    services:
+    - name: document-download-api
+      port: 7000
+  - match: Host(`api.notification.alpha.cdssandbox.xyz`)
+    kind: Rule
+    priority: 1
+    middlewares:
+    - name: security-headers
+    services:
+    - name: hasura
+      port: 8080
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: bastion-ingress
+  namespace: notification-canada-ca
+spec:
+  entryPoints:
+    - bastion
+  routes:
+  - match: HostSNI(`*`)
+    services:
+    - name: bastion
+      port: 22
