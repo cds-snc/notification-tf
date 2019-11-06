@@ -72,3 +72,10 @@ vars:
       apiVersion: v1
     fieldref:
       fieldpath: data.HASURA_JWT_KEY
+  - name: BASTION_SLACK_URL
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.BASTION_SLACK_URL
