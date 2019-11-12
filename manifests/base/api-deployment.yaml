@@ -6,7 +6,7 @@ metadata:
   name:  api
   namespace: notification-canada-ca
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: api 
@@ -23,6 +23,19 @@ spec:
               "sh",
               "-c",
               "until nslookup $(POSTGRES_HOST); do echo waiting for postgres; sleep 2; done;",
+            ]
+        - name: migrate-db
+          image: api
+          env:
+            - name: NOTIFY_ENVIRONMENT
+              value: '$(ENVIRONMENT)'
+            - name: SQLALCHEMY_DATABASE_URI
+              value: '$(POSTGRES_SQL)'
+          command:
+            [
+              "sh",
+              "-c",
+              "flask db upgrade",
             ]
       containers:
         - image: api
