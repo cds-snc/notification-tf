@@ -20,7 +20,7 @@ spec:
         - name: traefik
           image: traefik:v2.0
           args:
-            - --api.insecure
+            - --api=false
             - --accesslog
             - --entrypoints.http.Address=:80
             - --entrypoints.https.Address=:443
