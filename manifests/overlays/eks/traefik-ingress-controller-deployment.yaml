@@ -24,7 +24,7 @@ spec:
             - --accesslog
             - --entrypoints.http.Address=:80
             - --entrypoints.https.Address=:443
-            - --entryPoints.https.proxyProtocol.trustedIPs=192.168.28.239/32
+            - --entryPoints.https.proxyProtocol.trustedIPs=192.168.0.0/16
             - --entrypoints.bastion.Address=:3419
             - --providers.kubernetescrd
             - --certificatesresolvers.default.acme.tlschallenge
