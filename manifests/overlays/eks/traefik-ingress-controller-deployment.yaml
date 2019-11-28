@@ -30,6 +30,7 @@ spec:
             - --certificatesresolvers.default.acme.tlschallenge
             - --certificatesresolvers.default.acme.email=max.neuvians@cds-snc.ca
             - --certificatesresolvers.default.acme.storage=/certs/acme.json
+            - --accesslog.format=json
             - --accesslog=true
             - --log=true
           ports:
