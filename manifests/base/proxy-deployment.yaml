@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy
+  namespace: notification-canada-ca
+  labels:
+    app: proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proxy
+  template:
+    metadata:
+      labels:
+        app: proxy
+    spec:
+      containers:
+        - name: proxy
+          image: 691098801562.dkr.ecr.us-east-1.amazonaws.com/gcaccounts/proxy:latest
+          ports:
+            - containerPort: 8080
+          env:
+          - name: PORT
+            value: "8080"
+          command:
+            [
+             "/bin/sh",
+             "-c",
+             "/opt/ProxyNG/bin/ProxyNG.sh --fg"
+            ]

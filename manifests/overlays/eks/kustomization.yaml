@@ -12,6 +12,13 @@ resources:
   - fluentd.yaml
   - cwagent-statsd-configmap.yaml
   - cwagent-statsd-deployment.yaml
+  - aggregated-metrics-reader.yaml
+  - auth-delegator.yaml
+  - auth-reader.yaml
+  - metrics-apiservice.yaml
+  - metrics-server-deployment.yaml
+  - metrics-server-service.yaml
+  - resource-reader.yaml
 
 
 images:

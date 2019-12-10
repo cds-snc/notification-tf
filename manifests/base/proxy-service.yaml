@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: proxy
+  name: proxy
+  namespace: notification-canada-ca
+spec:
+  type: NodePort
+  ports:
+    - port: 443
+      targetPort: 443
+  selector:
+    app: proxy
