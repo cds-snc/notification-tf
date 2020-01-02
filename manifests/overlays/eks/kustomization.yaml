@@ -35,7 +35,8 @@ images:
 
 configMapGenerator:
 - name: application-config
-  env: .env
+  envs:
+    - .env
 
 vars:
   - name: BASE_DOMAIN

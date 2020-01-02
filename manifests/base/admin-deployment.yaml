@@ -43,6 +43,10 @@ spec:
               value: '$(ENVIRONMENT)'
             - name: SQLALCHEMY_DATABASE_URI
               value: '$(POSTGRES_SQL)'
+            - name: REDIS_URL
+              value: redis://redis.notification-canada-ca.svc.cluster.local:6379
+            - name: REDIS_ENABLED
+              value: "1"
           resources: {}
           ports:
             - containerPort: 6012
