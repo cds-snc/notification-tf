@@ -5,12 +5,15 @@ resources:
   - api-service.yaml
   - admin-deployment.yaml
   - admin-service.yaml
+  # - admin-hpa.yaml
   - celery-beat-deployment.yaml
   - celery-deployment.yaml
   - hasura-deployment.yaml
   - hasura-service.yaml
   - ipv4-deployment.yaml
   - ipv4-service.yaml
+  - redis-deployment.yaml
+  - redis-service.yaml
   - document-download-api-deployment.yaml
   - document-download-api-service.yaml
   - document-download-frontend-deployment.yaml
@@ -22,6 +25,5 @@ resources:
   - traefik-ingress-controller-cluster-role-binding.yaml
   - traefik-ingress-controller-service-account.yaml
   - traefik-ingress.yaml
-  - prometheus-role.yaml
-  - prometheus-config-map.yaml
-  - prometheus-deployment.yaml
+  - proxy-deployment.yaml
+  - proxy-service.yaml

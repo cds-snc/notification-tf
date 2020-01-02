@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name:  admin-hpa
+  namespace: notification-canada-ca
+spec:
+  maxReplicas: 8
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: extensions/v1
+    kind: Deployment
+    name: admin
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50

@@ -71,6 +71,14 @@ spec:
     services:
     - name: hasura
       port: 8080
+  - match: Host(`notification.alpha.cdssandbox.xyz`)
+    kind: Rule
+    priority: 1
+    middlewares:
+    - name: security-headers
+    services:
+    - name: proxy
+      port: 8080
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
