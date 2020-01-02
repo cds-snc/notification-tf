@@ -5,7 +5,7 @@ resources:
   - api-service.yaml
   - admin-deployment.yaml
   - admin-service.yaml
-  - admin-hpa.yaml
+  # - admin-hpa.yaml
   - celery-beat-deployment.yaml
   - celery-deployment.yaml
   - hasura-deployment.yaml
