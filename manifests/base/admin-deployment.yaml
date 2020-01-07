@@ -6,7 +6,7 @@ metadata:
   name:  admin
   namespace: notification-canada-ca
 spec:
-  replicas: 8
+  replicas: 2
   revisionHistoryLimit: 5
   selector:
     matchLabels:
@@ -37,8 +37,20 @@ spec:
           env:
             - name: ADMIN_BASE_URL
               value: https://$(BASE_DOMAIN)
+            - name: ADMIN_CLIENT_SECRET
+              value: '$(ADMIN_CLIENT_SECRET)'
             - name: API_HOST_NAME
               value: http://api.notification-canada-ca.svc.cluster.local:6011
+            - name: AWS_REGION
+              value: '$(AWS_REGION)'
+            - name: AWS_ACCESS_KEY_ID
+              value: '$(AWS_ACCESS_KEY_ID)'
+            - name: AWS_SECRET_ACCESS_KEY
+              value: '$(AWS_SECRET_ACCESS_KEY)'
+            - name: DANGEROUS_SALT
+              value: '$(DANGEROUS_SALT)'
+            - name: FLASK_APP
+              value: 'application.py'
             - name: NOTIFY_ENVIRONMENT
               value: '$(ENVIRONMENT)'
             - name: SQLALCHEMY_DATABASE_URI
@@ -47,7 +59,12 @@ spec:
               value: redis://redis.notification-canada-ca.svc.cluster.local:6379
             - name: REDIS_ENABLED
               value: "1"
-          resources: {}
+            - name: SECRET_KEY
+              value: '$(SECRET_KEY)'
+          resources:
+            requests:
+              cpu: "60m"
+              memory: "350Mi"
           ports:
             - containerPort: 6012
           readinessProbe:
