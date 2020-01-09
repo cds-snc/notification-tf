@@ -12,6 +12,7 @@ resources:
   - fluentd.yaml
   - cwagent-statsd-configmap.yaml
   - cwagent-statsd-deployment.yaml
+  # - celery-deployment-fargate.yaml
   - aggregated-metrics-reader.yaml
   - auth-delegator.yaml
   - auth-reader.yaml
