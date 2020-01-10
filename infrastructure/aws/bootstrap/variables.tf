@@ -1,4 +1,4 @@
 variable "name" {
   description = "(Required) Specify the Service Name."
-  default     = "notification-alpha-canada-ca"
+  default     = "notification-canada-ca-production"
 }

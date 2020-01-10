@@ -3,10 +3,10 @@ aws-bootstrap:
 	terraform init &&\
 	terraform plan &&\
 	terraform apply &&\
-	terraform output > ../backend.tfvars
+	terraform output > ../setup/backend.tfvars
 
-aws-apply:
-	cd infrastructure/aws &&\
+aws-build:
+	cd infrastructure/aws/build &&\
 	terraform init -backend-config=backend.tfvars &&\
 	terraform plan &&\
 	terraform apply
