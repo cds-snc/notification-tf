@@ -9,3 +9,9 @@ variable name {
   default     = "notification-canada-ca"
   type        = string
 }
+
+variable rds_password {
+  description = "RDS password"
+  default     = "notification-canada-ca"
+  type        = string
+}

@@ -11,6 +11,10 @@ aws-build:
 	terraform plan &&\
 	terraform apply
 
+aws-config:
+	KUBECONFIG=~/.kube/config:./infrastructure/aws/build/kubeconfig_notification-canada-ca kubectl config view --flatten > mergedkub && mv mergedkub ~/.kube/config &&\
+	kubectl config use-context eks_notification-canada-ca
+
 aws-eks:
 	cd infrastructure/aws &&\
 	eksctl create cluster --config-file=eksctl.yaml

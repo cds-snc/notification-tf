@@ -4,6 +4,11 @@ provider "aws" {
   shared_credentials_file = "../credentials"
 }
 
+provider "aws" {
+  alias  = "useast1"
+  region = "us-east-1"
+}
+
 terraform {
   backend "s3" {}
 }
