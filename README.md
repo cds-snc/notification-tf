@@ -18,16 +18,15 @@ aws_secret_access_key=[SECRET]
 
 2. Adjust `aws/bootstrap/variables.tf` if needed and run `make aws-bootstrap` to deploy the Terraform storage backend.
 
-3. Adjust `aws/variables.tf` if needed and `make aws-deploy` to deploy the infrastructure needed for the project.
+3. Adjust `aws/variables.tf` if needed and `make aws-build` to deploy the infrastructure needed for the project.
 
-4. Next create a kubernetes cluster in AWS. You can make changes to how the cluster is set up in `aws/eksctl.yaml`.  Run `make aws-eks`. You may need to wait up to 20 minutes.
+4. Adjust the variables in `manifests/overlays/eks/.env`. A sample of the information required is in `env.example`
 
-## To Document
-
-- Adjusting config maps
-- SNS SMS Messaging
-- SES validation
-- CNAME configuration (Traefik restart)
-- Backing up the persistant volumes
-- Required IAM permissions
-- Outputting kustomize props file from output
+5. Run `make aws-eks` to deploy the cluster.
+  
+6. Complete the following manual tasks in the AWS account:
+- [] Request an increase in spending for SNS SMS messages
+- [] Request to be removed from the SES sandbox
+- [] Use the ALB A name to re-map the DNS
+- [] Uncomment the aws_sns_topic_subscription in `sns.tf` and run `make aws-build` again.
+- [] Ensure that SNS SMS message limit is applied in account
