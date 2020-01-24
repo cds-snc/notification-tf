@@ -30,3 +30,4 @@ aws_secret_access_key=[SECRET]
 - [] Use the ALB A name to re-map the DNS
 - [] Uncomment the aws_sns_topic_subscription in `sns.tf` and run `make aws-build` again.
 - [] Ensure that SNS SMS message limit is applied in account
+- [] Hook up notification mechanism of choice to the `alert_critical` and `alert_warning` SNS topics
