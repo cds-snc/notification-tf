@@ -16,7 +16,7 @@ aws-config:
 	kubectl config use-context eks_notification-canada-ca
 
 eks: 
-	kustomize build manifests/overlays/eks | kubectl apply -f -
+	kubectl apply -k manifests/overlays/eks
 
-delete-eks: 
-	kustomize build manifests/overlays/eks | kubectl delete -f -
+kustomize:
+	kubectl kustomize manifests/overlays/eks
