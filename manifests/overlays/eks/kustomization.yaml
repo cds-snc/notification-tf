@@ -200,3 +200,38 @@ vars:
       apiVersion: v1
     fieldref:
       fieldpath: data.DOCUMENTS_BUCKET
+  - name: AWS_ROUTE53_ZONE
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.AWS_ROUTE53_ZONE
+  - name: AWS_SES_REGION
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.AWS_SES_REGION
+  - name: AWS_SES_SMTP
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.AWS_SES_SMTP
+  - name: AWS_SES_ACCESS_KEY
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.AWS_SES_ACCESS_KEY
+  - name: AWS_SES_SECRET_KEY
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.AWS_SES_SECRET_KEY

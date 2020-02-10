@@ -37,6 +37,16 @@ spec:
               value: '$(AWS_ACCESS_KEY_ID)'
             - name: AWS_SECRET_ACCESS_KEY
               value: '$(AWS_SECRET_ACCESS_KEY)'
+            - name: AWS_ROUTE53_ZONE
+              value: '$(AWS_ROUTE53_ZONE)'
+            - name: AWS_SES_REGION
+              value: '$(AWS_SES_REGION)'
+            - name: AWS_SES_SMTP
+              value: '$(AWS_SES_SMTP)'
+            - name: AWS_SES_ACCESS_KEY
+              value: '$(AWS_SES_ACCESS_KEY)'
+            - name: AWS_SES_SECRET_KEY
+              value: '$(AWS_SES_SECRET_KEY)'
             - name: DANGEROUS_SALT
               value: '$(DANGEROUS_SALT)'
             - name: DOCUMENT_DOWNLOAD_API_HOST
@@ -96,6 +106,16 @@ spec:
               value: '$(AWS_ACCESS_KEY_ID)'
             - name: AWS_SECRET_ACCESS_KEY
               value: '$(AWS_SECRET_ACCESS_KEY)'
+            - name: AWS_ROUTE53_ZONE
+              value: '$(AWS_ROUTE53_ZONE)'
+            - name: AWS_SES_REGION
+              value: '$(AWS_SES_REGION)'
+            - name: AWS_SES_SMTP
+              value: '$(AWS_SES_SMTP)'
+            - name: AWS_SES_ACCESS_KEY
+              value: '$(AWS_SES_ACCESS_KEY)'
+            - name: AWS_SES_SECRET_KEY
+              value: '$(AWS_SES_SECRET_KEY)'
             - name: DANGEROUS_SALT
               value: '$(DANGEROUS_SALT)'
             - name: DOCUMENT_DOWNLOAD_API_HOST
