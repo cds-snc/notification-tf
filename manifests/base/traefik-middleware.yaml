@@ -1,16 +1,6 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: redirect-middleware
-  namespace: notification-canada-ca
-spec:
-  redirectScheme:
-    scheme: https
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
   name: security-headers
   namespace: notification-canada-ca
 spec:

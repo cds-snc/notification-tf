@@ -20,7 +20,6 @@ resources:
   - document-download-frontend-service.yaml
   - traefik-crd.yaml
   - traefik-middleware.yaml
-  - traefik-tls.yaml
   - traefik-ingress-controller-cluster-role.yaml
   - traefik-ingress-controller-cluster-role-binding.yaml
   - traefik-ingress-controller-service-account.yaml

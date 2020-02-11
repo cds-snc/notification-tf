@@ -3,7 +3,6 @@ bases:
 
 resources:
   - storage-class-default.yaml
-  - certs-claim.yaml
   - bastion-claim.yaml
   - bastion-deployment.yaml
   - bastion-service.yaml

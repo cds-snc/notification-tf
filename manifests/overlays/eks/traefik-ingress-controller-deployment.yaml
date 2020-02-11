@@ -23,21 +23,15 @@ spec:
             - --api=false
             - --accesslog
             - --entrypoints.http.Address=:80
-            - --entrypoints.https.Address=:443
-            - --entryPoints.https.proxyProtocol.trustedIPs=192.168.0.0/16
+            - --entryPoints.http.proxyProtocol.trustedIPs=192.168.0.0/16
             - --entrypoints.bastion.Address=:3419
             - --providers.kubernetescrd
-            - --certificatesresolvers.default.acme.tlschallenge
-            - --certificatesresolvers.default.acme.email=max.neuvians@cds-snc.ca
-            - --certificatesresolvers.default.acme.storage=/certs/acme.json
             - --accesslog.format=json
             - --accesslog=true
             - --log=true
           ports:
             - containerPort: 80
               name: http
-            - containerPort: 443
-              name: https
             - containerPort: 3419
               name: bastion
           securityContext:
@@ -46,11 +40,4 @@ spec:
               - NET_BIND_SERVICE
               drop:
               - ALL
-          volumeMounts:
-          - mountPath: /certs
-            name: certs-claim
       terminationGracePeriodSeconds: 60
-      volumes:
-      - name: certs-claim
-        persistentVolumeClaim:
-          claimName: certs-claim

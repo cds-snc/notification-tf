@@ -7,13 +7,12 @@ spec:
   ports:
     - protocol: TCP
       name: bastion
+      nodePort: 33419
       port: 3419
     - protocol: TCP
       name: http
+      nodePort: 30080
       port: 80
-    - protocol: TCP
-      name: https
-      port: 443
   selector:
     app: traefik
-  type: LoadBalancer
+  type: NodePort
