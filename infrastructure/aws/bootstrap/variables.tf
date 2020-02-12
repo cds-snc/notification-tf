@@ -1,4 +1,22 @@
-variable "name" {
-  description = "(Required) Specify the Service Name."
-  default     = "notification-canada-ca-production"
+variable domain {
+  description = "(Required) Specify the Service Domain."
+  type        = string
+}
+
+variable rds_password {
+  description = "RDS password"
+  type        = string
+}
+
+variable name {
+  description = "Service name"
+  type        = string
+}
+
+variable "region" {
+  description = "(Required) Your AWS region"
+}
+
+variable "snapshot" {
+  description = "(Optional) A RDS snapshot"
 }

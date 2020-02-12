@@ -7,31 +7,7 @@ spec:
   entryPoints:
     - http
   routes:
-  - match: Host(`notification.alpha.canada.ca`)
-    kind: Rule
-    priority: 1
-    middlewares:
-    - name: security-headers
-    services:
-    - name: admin
-      port: 6012
-  - match: Host(`api.notification.alpha.canada.ca`)
-    kind: Rule
-    priority: 1
-    middlewares:
-    - name: security-headers
-    services:
-    - name: api
-      port: 6011
-  - match: Host(`document.notification.alpha.canada.ca`)
-    kind: Rule
-    priority: 1
-    middlewares:
-    - name: security-headers
-    services:
-    - name: document-download-frontend
-      port: 7001
-  - match: Host(`api.document.notification.alpha.canada.ca`)
+  - match: HostRegexp(`api.document.{domain:.+}`)
     kind: Rule
     priority: 1
     middlewares:
@@ -39,6 +15,30 @@ spec:
     services:
     - name: document-download-api
       port: 7000
+  - match: HostRegexp(`document.{domain:.+}`)
+    kind: Rule
+    priority: 2
+    middlewares:
+    - name: security-headers
+    services:
+    - name: document-download-frontend
+      port: 7001
+  - match: HostRegexp(`api.{domain:.+}`)
+    kind: Rule
+    priority: 3
+    middlewares:
+    - name: security-headers
+    services:
+    - name: api
+      port: 6011
+  - match: HostRegexp(`{domain:.+}`)
+    kind: Rule
+    priority: 4
+    middlewares:
+    - name: security-headers
+    services:
+    - name: admin
+      port: 6012
   - match: Host(`api.notification.alpha.cdssandbox.xyz`)
     kind: Rule
     priority: 1

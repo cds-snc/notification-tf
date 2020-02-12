@@ -234,3 +234,17 @@ vars:
       apiVersion: v1
     fieldref:
       fieldpath: data.AWS_SES_SECRET_KEY
+  - name: ASSET_UPLOAD_BUCKET_NAME
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.ASSET_UPLOAD_BUCKET_NAME
+  - name: CSV_UPLOAD_BUCKET_NAME
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.CSV_UPLOAD_BUCKET_NAME

@@ -1,19 +1,26 @@
 aws-bootstrap:
 	cd infrastructure/aws/bootstrap &&\
 	terraform init &&\
-	terraform plan &&\
-	terraform apply &&\
+	terraform plan -var-file=../../../vars.tfvars &&\
+	terraform apply -var-file=../../../vars.tfvars &&\
 	terraform output > ../build/backend.tfvars
+
+aws-build-remove:
+	cd infrastructure/aws/bootstrap &&\
+	terraform destroy -var-file=../../../vars.tfvars
 
 aws-build:
 	cd infrastructure/aws/build &&\
 	terraform init -backend-config=backend.tfvars &&\
-	terraform plan &&\
-	terraform apply
+	terraform plan -var-file=../../../vars.tfvars &&\
+	terraform apply -var-file=../../../vars.tfvars
+
+aws-build-remove:
+	cd infrastructure/aws/build &&\
+	terraform destroy -var-file=../../../vars.tfvars
 
 aws-config:
-	KUBECONFIG=~/.kube/config:./infrastructure/aws/build/kubeconfig_notification-canada-ca kubectl config view --flatten > mergedkub && mv mergedkub ~/.kube/config &&\
-	kubectl config use-context eks_notification-canada-ca
+	KUBECONFIG=~/.kube/config:./infrastructure/aws/build/kubeconfig_* kubectl config view --flatten > mergedkub && mv mergedkub ~/.kube/config
 
 eks: 
 	kubectl apply -k manifests/overlays/eks

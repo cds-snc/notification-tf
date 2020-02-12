@@ -1,6 +1,6 @@
 provider "aws" {
   version = "~> 2.0"
-  region  = "ca-central-1"
+  region  = var.region
   shared_credentials_file = "../credentials"
 }
 

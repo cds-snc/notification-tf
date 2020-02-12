@@ -7,7 +7,7 @@ spec:
   ports:
     - protocol: TCP
       name: bastion
-      nodePort: 33419
+      nodePort: 30419
       port: 3419
     - protocol: TCP
       name: http

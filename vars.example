@@ -1,0 +1,5 @@
+domain = "notification.cdssandbox.xyz"
+name = "notifcation-prod-YYYY-MM-DD"
+rds_password = "abcd1234"
+region = "ca-central-1"
+snapshot = ""
