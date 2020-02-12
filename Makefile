@@ -19,6 +19,12 @@ aws-build-remove:
 	cd infrastructure/aws/build &&\
 	terraform destroy -var-file=../../../vars.tfvars
 
+aws-setup:
+	cd infrastructure/aws/setup &&\
+	terraform init -backend-config=backend.tfvars &&\
+	terraform plan -var-file=../../../vars.tfvars &&\
+	terraform apply -var-file=../../../vars.tfvars
+
 aws-config:
 	KUBECONFIG=~/.kube/config:./infrastructure/aws/build/kubeconfig_* kubectl config view --flatten > mergedkub && mv mergedkub ~/.kube/config
 
