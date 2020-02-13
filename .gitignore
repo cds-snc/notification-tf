@@ -34,3 +34,4 @@ credentials
 .env
 *.tfvars
 *kubeconfig*
+instructions.txt

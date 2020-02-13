@@ -40,7 +40,7 @@ resource "aws_db_instance" "notification-canada-ca-snapshot" {
     password                    = var.rds_password
     port                        = "5432"
     engine                      = "postgres"
-    engine_version              = "11.5"
+    engine_version              = "10.6"
     instance_class              = "db.t3.large"
     allocated_storage           = "20"
     storage_encrypted           = true
@@ -50,8 +50,8 @@ resource "aws_db_instance" "notification-canada-ca-snapshot" {
     storage_type                = "gp2"
     publicly_accessible         = false
     snapshot_identifier         = var.snapshot
-    allow_major_version_upgrade = true
-    auto_minor_version_upgrade  = true
+    allow_major_version_upgrade = false
+    auto_minor_version_upgrade  = false
     apply_immediately           = true
     maintenance_window          = "sun:02:00-sun:04:00"
     skip_final_snapshot         = false

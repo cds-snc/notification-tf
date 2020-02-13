@@ -23,7 +23,7 @@ module "eks" {
   cluster_name = var.name
   subnets      = module.vpc.private_subnets
 
-  kubeconfig_name = "kubeconfig"
+  kubeconfig_name = "kubeconfig-notification-canada-ca"
 
   tags = {
     Environment = "production"

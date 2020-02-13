@@ -30,7 +30,7 @@ aws-setup-remove:
 	terraform destroy -var-file=../../../vars.tfvars
 
 aws-config:
-	KUBECONFIG=~/.kube/config:./infrastructure/aws/build/kubeconfig_notifcation-prod-2020-02-12 kubectl config view --flatten > mergedkub && mv mergedkub ~/.kube/config
+	KUBECONFIG=~/.kube/config:./infrastructure/aws/build/kubeconfig_notifcation-prod-2020-20-13 kubectl config view --flatten > mergedkub && mv mergedkub ~/.kube/config
 
 eks: 
 	kubectl apply -k manifests/overlays/eks
