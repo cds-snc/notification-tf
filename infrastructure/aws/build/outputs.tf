@@ -9,7 +9,7 @@ output "dkim_verification_token" {
 }
 
 output "naked_acm_verification" {
-  description = "Certificate verification CNAME for nakedß"
+  description = "Certificate verification CNAME for naked domain"
   value       = aws_acm_certificate.notification-canada-ca.domain_validation_options
 }
 

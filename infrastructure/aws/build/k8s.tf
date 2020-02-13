@@ -23,6 +23,8 @@ module "eks" {
   cluster_name = var.name
   subnets      = module.vpc.private_subnets
 
+  kubeconfig_name = "kubeconfig"
+
   tags = {
     Environment = "production"
   }

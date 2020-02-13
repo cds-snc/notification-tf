@@ -23,7 +23,8 @@ spec:
             - --api=false
             - --accesslog
             - --entrypoints.http.Address=:80
-            - --entryPoints.http.proxyProtocol.trustedIPs=10.0.0.0/16
+            - --entryPoints.http.proxyProtocol.insecure
+            - --entryPoints.http.forwardedHeaders.insecure
             - --entrypoints.bastion.Address=:3419
             - --providers.kubernetescrd
             - --accesslog.format=json

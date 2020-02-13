@@ -7,33 +7,33 @@ spec:
   entryPoints:
     - http
   routes:
-  - match: HostRegexp(`api.document.{domain:.+}`)
+  - match: HostRegexp(`api.document.{d:.*}`)
     kind: Rule
-    priority: 1
+    priority: 40
     middlewares:
     - name: security-headers
     services:
     - name: document-download-api
       port: 7000
-  - match: HostRegexp(`document.{domain:.+}`)
+  - match: HostRegexp(`document.{d:.*}`)
     kind: Rule
-    priority: 2
+    priority: 30
     middlewares:
     - name: security-headers
     services:
     - name: document-download-frontend
       port: 7001
-  - match: HostRegexp(`api.{domain:.+}`)
+  - match: HostRegexp(`api.{d:.*}`)
     kind: Rule
-    priority: 3
+    priority: 20
     middlewares:
     - name: security-headers
     services:
     - name: api
       port: 6011
-  - match: HostRegexp(`{domain:.+}`)
+  - match: HostRegexp(`{d:.*}`)
     kind: Rule
-    priority: 4
+    priority: 10
     middlewares:
     - name: security-headers
     services:

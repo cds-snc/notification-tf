@@ -9,7 +9,3 @@ output "key" {
 output "region" {
   value = format("\"%s\"", var.region)
 }
-
-output "shared_credentials_file" {
-  value = format("\"%s\"", "../credentials")
-}

@@ -5,7 +5,7 @@ aws-bootstrap:
 	terraform apply -var-file=../../../vars.tfvars &&\
 	terraform output > ../build/backend.tfvars
 
-aws-build-remove:
+aws-bootstrap-remove:
 	cd infrastructure/aws/bootstrap &&\
 	terraform destroy -var-file=../../../vars.tfvars
 
@@ -25,8 +25,12 @@ aws-setup:
 	terraform plan -var-file=../../../vars.tfvars &&\
 	terraform apply -var-file=../../../vars.tfvars
 
+aws-setup-remove:
+	cd infrastructure/aws/setup &&\
+	terraform destroy -var-file=../../../vars.tfvars
+
 aws-config:
-	KUBECONFIG=~/.kube/config:./infrastructure/aws/build/kubeconfig_* kubectl config view --flatten > mergedkub && mv mergedkub ~/.kube/config
+	KUBECONFIG=~/.kube/config:./infrastructure/aws/build/kubeconfig_notifcation-prod-2020-02-12 kubectl config view --flatten > mergedkub && mv mergedkub ~/.kube/config
 
 eks: 
 	kubectl apply -k manifests/overlays/eks
