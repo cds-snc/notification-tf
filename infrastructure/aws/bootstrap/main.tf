@@ -1,6 +1,7 @@
 provider "aws" {
   version = "~> 2.0"
   region  = var.region
+  allowed_account_ids = [var.account_id]
 }
 
 resource "aws_s3_bucket" "storage_bucket" {

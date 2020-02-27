@@ -1,3 +1,4 @@
+account_id = "000000000000"
 domain = "notification.cdssandbox.xyz"
 name = "notifcation-prod-YYYY-MM-DD"
 rds_password = "abcd1234"
