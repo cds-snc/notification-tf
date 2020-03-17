@@ -24,7 +24,7 @@ resources:
 
 images:
 - name: admin
-  newName: gcr.io/cdssnc/notify/admin:eef57bd	
+  newName: gcr.io/cdssnc/notify/admin:4a17c19	
 - name: api
   newName: gcr.io/cdssnc/notify/api:dd69ab8
 - name: document-download-api
