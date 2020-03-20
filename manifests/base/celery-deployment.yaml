@@ -6,7 +6,7 @@ metadata:
   name:  celery
   namespace: notification-canada-ca
 spec:
-  replicas: 4
+  replicas: 10
   revisionHistoryLimit: 5
   selector:
     matchLabels:
@@ -83,7 +83,13 @@ spec:
               value: '$(TWILIO_FROM_NUMBER)'
           command: ["/bin/sh"]
           args: ["-c", "sh /app/scripts/run_celery.sh"]
-          resources: {}
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "500Mi"
+            limits:
+              cpu: "550m"
+              memory: "600Mi"
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
