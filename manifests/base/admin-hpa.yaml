@@ -4,7 +4,7 @@ metadata:
   name:  admin-hpa
   namespace: notification-canada-ca
 spec:
-  maxReplicas: 8
+  maxReplicas: 4
   minReplicas: 2
   scaleTargetRef:
     apiVersion: extensions/v1
