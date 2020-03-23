@@ -6,10 +6,15 @@ metadata:
   name:  api
   namespace: notification-canada-ca
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: api 
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -152,7 +157,13 @@ spec:
               value: '$(TWILIO_AUTH_TOKEN)'
             - name: TWILIO_FROM_NUMBER
               value: '$(TWILIO_FROM_NUMBER)'
-          resources: {}
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "550Mi"
+            limits:
+              cpu: "600m"
+              memory: "750Mi"
           ports:
             - containerPort: 6011
           readinessProbe:
