@@ -26,7 +26,7 @@ images:
 - name: admin
   newName: gcr.io/cdssnc/notify/admin:7ddcb76
 - name: api
-  newName: gcr.io/cdssnc/notify/api:a1f5116
+  newName: gcr.io/cdssnc/notify/api:b3434ef
 - name: document-download-api
   newName: gcr.io/cdssnc/notify/document-download-api:latest
 - name: document-download-frontend
