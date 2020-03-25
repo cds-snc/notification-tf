@@ -24,7 +24,7 @@ spec:
     contentTypeNosniff: true
     forceSTSHeader: true
     frameDeny: true
-    sslRedirect: true
+    #sslRedirect: true
     stsIncludeSubdomains: true
     stsPreload: true
     #contentSecurityPolicy: "default-src 'self' 'unsafe-inline' 'unsafe-eval'"
