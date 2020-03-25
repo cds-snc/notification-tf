@@ -1,4 +1,0 @@
-bucket = ""
-key    = ""
-region = "ca-central-1"
-shared_credentials_file = "credentials"
