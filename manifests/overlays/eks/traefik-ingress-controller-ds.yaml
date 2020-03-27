@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: traefik-ds
+  namespace: kube-system
+  labels:
+    app: traefik-ds
+spec:
+  selector:
+    matchLabels:
+      app: traefik-ds
+  template:
+    metadata:
+      labels:
+        app: traefik-ds
+    spec:
+      hostNetwork: true
+      restartPolicy: Always
+      serviceAccountName: traefik-ingress-controller
+      containers:
+        - name: traefik
+          image: traefik:v2.0
+          args:
+            - --api=false
+            - --accesslog
+            - --entrypoints.http.Address=:80
+            - --entryPoints.http.proxyProtocol.insecure
+            - --entryPoints.http.forwardedHeaders.insecure
+            - --providers.kubernetescrd
+            - --accesslog.format=json
+            - --accesslog=true
+            - --log=true
+          ports:
+            - containerPort: 80
+              name: http
+      terminationGracePeriodSeconds: 60

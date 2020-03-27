@@ -9,6 +9,8 @@ resources:
   - bastion-service.yaml
   - traefik-ingress-service.yaml
   - traefik-ingress-controller-deployment.yaml
+  - traefik-ingress-service-ds.yaml
+  - traefik-ingress-controller-ds.yaml
   - fluentd.yaml
   - cwagent-statsd-configmap.yaml
   - cwagent-statsd-deployment.yaml
