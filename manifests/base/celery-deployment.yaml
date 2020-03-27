@@ -6,7 +6,7 @@ metadata:
   name:  celery
   namespace: notification-canada-ca
 spec:
-  replicas: 4
+  replicas: 6
   revisionHistoryLimit: 5
   selector:
     matchLabels:
