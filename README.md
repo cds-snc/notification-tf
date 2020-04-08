@@ -26,6 +26,10 @@ images:
 
 if you would for example like to update the API image change `gcr.io/cdssnc/notify/api:b3434ef` to your latest release tag - ex: `gcr.io/cdssnc/notify/api:abcdefg`
 
+**Note:** To ensure the image has built visit
+- Admin - gcr.io/cdssnc/notify/admin:commit-hash-here
+- Api - gcr.io/cdssnc/notify/api:commit-hash-here
+
 
 ## Deployment notes 
 
