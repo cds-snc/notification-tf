@@ -127,6 +127,10 @@ spec:
               value: 'http://document-download-api.notification-canada-ca.svc.cluster.local:7000'
             - name: FIDO2_DOMAIN
               value: '$(BASE_DOMAIN)'
+            - name: FRESH_DESK_API_URL
+              value: '$(FRESH_DESK_API_URL)'
+            - name: FRESH_DESK_API_KEY
+              value: '$(FRESH_DESK_API_KEY)'
             - name: MLWR_HOST
               value: '$(MLWR_HOST)'
             - name: MLWR_USER
@@ -159,7 +163,7 @@ spec:
               value: '$(TWILIO_FROM_NUMBER)'
           resources: 
             requests:
-              cpu: "400m"
+              cpu: "500m"
               memory: "700Mi"
             limits:
               cpu: "1200m"
