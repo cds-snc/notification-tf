@@ -237,3 +237,17 @@ vars:
       apiVersion: v1
     fieldref:
       fieldpath: data.AWS_SES_SECRET_KEY
+  - name: FRESH_DESK_API_URL
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.FRESH_DESK_API_URL
+  - name: FRESH_DESK_API_KEY
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.FRESH_DESK_API_KEY
