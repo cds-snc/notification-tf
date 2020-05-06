@@ -251,3 +251,17 @@ vars:
       apiVersion: v1
     fieldref:
       fieldpath: data.FRESH_DESK_API_KEY
+  - name: AWS_PINPOINT_APP_ID
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.AWS_PINPOINT_APP_ID
+  - name: AWS_PINPOINT_KEYWORD
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.AWS_PINPOINT_KEYWORD
