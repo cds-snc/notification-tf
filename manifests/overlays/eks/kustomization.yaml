@@ -1,6 +1,5 @@
 bases:
   - ../../base
-
 resources:
   - storage-class-default.yaml
   - certs-claim.yaml
@@ -14,7 +13,6 @@ resources:
   - fluentd.yaml
   - cwagent-statsd-configmap.yaml
   - cwagent-statsd-deployment.yaml
-  # - celery-deployment-fargate.yaml
   - aggregated-metrics-reader.yaml
   - auth-delegator.yaml
   - auth-reader.yaml
@@ -22,24 +20,20 @@ resources:
   - metrics-server-deployment.yaml
   - metrics-server-service.yaml
   - resource-reader.yaml
-
-
 images:
-- name: admin
-  newName: gcr.io/cdssnc/notify/admin:6db02b4
-- name: api
-  newName: gcr.io/cdssnc/notify/api:10b9313
-- name: document-download-api
-  newName: gcr.io/cdssnc/notify/document-download-api:latest
-- name: document-download-frontend
-  newName: gcr.io/cdssnc/notify/document-download-frontend:latest
-- name: bastion
-  newName: gcr.io/cdssnc/notify/bastion:latest
-
+  - name: admin
+    newName: gcr.io/cdssnc/notify/admin:4a068e3
+  - name: api
+    newName: gcr.io/cdssnc/notify/api:be4ee8d
+  - name: document-download-api
+    newName: gcr.io/cdssnc/notify/document-download-api:latest
+  - name: document-download-frontend
+    newName: gcr.io/cdssnc/notify/document-download-frontend:latest
+  - name: bastion
+    newName: gcr.io/cdssnc/notify/bastion:latest
 configMapGenerator:
-- name: application-config
-  env: .env
-
+  - name: application-config
+    env: .env
 vars:
   - name: BASE_DOMAIN
     objref:
