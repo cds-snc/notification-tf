@@ -265,3 +265,10 @@ vars:
       apiVersion: v1
     fieldref:
       fieldpath: data.AWS_PINPOINT_KEYWORD
+  - name: NEW_RELIC_LICENSE_KEY
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.NEW_RELIC_LICENSE_KEY

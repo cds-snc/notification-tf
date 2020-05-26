@@ -51,6 +51,10 @@ spec:
               value: '$(DANGEROUS_SALT)'
             - name: FLASK_APP
               value: 'application.py'
+            - name: NEW_RELIC_LICENSE_KEY
+              value: '$(NEW_RELIC_LICENSE_KEY)'
+            - name: NEW_RELIC_APP_NAME
+              value: 'notification-admin-production'
             - name: NOTIFY_ENVIRONMENT
               value: '$(ENVIRONMENT)'
             - name: SQLALCHEMY_DATABASE_URI
