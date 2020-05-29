@@ -67,6 +67,8 @@ spec:
               value: '$(NEW_RELIC_LICENSE_KEY)'
             - name: NEW_RELIC_APP_NAME
               value: 'notification-celery-production'
+            - name: NEW_RELIC_DISTRIBUTED_TRACING_ENABLED
+              value: 'true'
             - name: NOTIFY_EMAIL_DOMAIN
               value: '$(BASE_DOMAIN)'
             - name: NOTIFY_ENVIRONMENT
