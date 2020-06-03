@@ -57,6 +57,10 @@ spec:
               value: 'http://document-download-api.notification-canada-ca.svc.cluster.local:7000'
             - name: FIDO2_DOMAIN
               value: '$(BASE_DOMAIN)'
+            - name: HC_EN_SERVICE_ID
+              value: '$(HC_EN_SERVICE_ID)'
+            - name: HC_FR_SERVICE_ID
+              value: '$(HC_FR_SERVICE_ID)'
             - name: MLWR_HOST
               value: '$(MLWR_HOST)'
             - name: MLWR_USER
