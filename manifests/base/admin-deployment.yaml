@@ -47,10 +47,22 @@ spec:
               value: '$(AWS_ACCESS_KEY_ID)'
             - name: AWS_SECRET_ACCESS_KEY
               value: '$(AWS_SECRET_ACCESS_KEY)'
+            - name: BULK_SEND_AWS_ACCESS_KEY
+              value: '$(BULK_SEND_AWS_ACCESS_KEY)'
+            - name: BULK_SEND_AWS_BUCKET
+              value: '$(BULK_SEND_AWS_BUCKET)'
+            - name: BULK_SEND_AWS_SECRET_KEY
+              value: '$(BULK_SEND_AWS_SECRET_KEY)'
+            - name: BULK_SEND_AWS_REGION
+              value: '$(BULK_SEND_AWS_REGION)'
             - name: DANGEROUS_SALT
               value: '$(DANGEROUS_SALT)'
             - name: FLASK_APP
               value: 'application.py'
+            - name: HC_EN_SERVICE_ID
+              value: '$(HC_EN_SERVICE_ID)'
+            - name: HC_FR_SERVICE_ID
+              value: '$(HC_FR_SERVICE_ID)'
             - name: NEW_RELIC_LICENSE_KEY
               value: '$(NEW_RELIC_LICENSE_KEY)'
             - name: NEW_RELIC_APP_NAME
