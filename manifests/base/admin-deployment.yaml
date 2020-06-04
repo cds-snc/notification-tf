@@ -55,6 +55,8 @@ spec:
               value: '$(BULK_SEND_AWS_SECRET_KEY)'
             - name: BULK_SEND_AWS_REGION
               value: '$(BULK_SEND_AWS_REGION)'
+            - name: BULK_SEND_TEST_SERVICE_ID
+              value: '$(BULK_SEND_TEST_SERVICE_ID)'
             - name: DANGEROUS_SALT
               value: '$(DANGEROUS_SALT)'
             - name: FLASK_APP

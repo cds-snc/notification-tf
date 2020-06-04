@@ -308,3 +308,10 @@ vars:
       apiVersion: v1
     fieldref:
       fieldpath: data.HC_FR_SERVICE_ID
+  - name: BULK_SEND_TEST_SERVICE_ID
+    objref:
+      kind: ConfigMap
+      name: application-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.BULK_SEND_TEST_SERVICE_ID
