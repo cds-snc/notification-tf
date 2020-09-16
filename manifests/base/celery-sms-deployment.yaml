@@ -33,7 +33,7 @@ spec:
       containers:
         - image: api
           imagePullPolicy: Always
-          name: celery
+          name: celery-sms
           env:
             - name: ADMIN_BASE_URL
               value: https://$(BASE_DOMAIN)
