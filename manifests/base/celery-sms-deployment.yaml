@@ -100,7 +100,7 @@ spec:
             - name: TWILIO_FROM_NUMBER
               value: '$(TWILIO_FROM_NUMBER)'
           command: ["/bin/sh"]
-          args: ["-c", "sh /app/scripts/run_celery.sh"]
+          args: ["-c", "sh /app/scripts/run_celery_sms.sh"]
           resources:
             requests:
               cpu: "100m"
