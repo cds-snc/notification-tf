@@ -8,6 +8,7 @@ resources:
   - admin-hpa.yaml
   - celery-beat-deployment.yaml
   - celery-deployment.yaml
+  - celery-sms-deployment.yaml
   - hasura-deployment.yaml
   - hasura-service.yaml
   - ipv4-deployment.yaml
