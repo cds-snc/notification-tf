@@ -22,9 +22,9 @@ resources:
   - resource-reader.yaml
 images:
   - name: admin
-    newName: gcr.io/cdssnc/notify/admin:ad845ba
+    newName: gcr.io/cdssnc/notify/admin:c19471e
   - name: api
-    newName: gcr.io/cdssnc/notify/api:9683960
+    newName: gcr.io/cdssnc/notify/api:57bcfb8
   - name: document-download-api
     newName: gcr.io/cdssnc/notify/document-download-api:latest
   - name: document-download-frontend
