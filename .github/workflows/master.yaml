@@ -1,7 +1,7 @@
 name: Build and deploy to master
 on:
   push:
-    branches:    
+    branches:
       - master
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
           args: eks --region us-east-1 update-kubeconfig --name notification-alpha-canada-ca
-      
+
       - name: Apply Configuration
         uses: docker://gcr.io/cdssnc/aws-kubectl:latest
         env:
@@ -33,3 +33,18 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
           args: apply --kubeconfig=/github/home/.kube/config -k manifests/overlays/eks
+      - name: Add deployment to New Relic
+        run: |
+          for application_id in 283469061 283468826 283468685; do
+            curl -X POST "https://api.newrelic.com/v2/applications/$application_id/deployments.json" \
+             -H "X-Api-Key:$NEW_RELIC_API_KEY" -i \
+             -H 'Content-Type: application/json' \
+             -d \
+            '{
+              "deployment": {
+                "revision": "$GITHUB_SHA"
+              }
+            }'
+          done
+        env:
+          NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
