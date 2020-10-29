@@ -42,7 +42,7 @@ jobs:
              -d \
             '{
               "deployment": {
-                "revision": "$GITHUB_SHA"
+                "revision": "'$GITHUB_SHA'"
               }
             }'
           done
