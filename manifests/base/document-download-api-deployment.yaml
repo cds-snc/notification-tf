@@ -32,8 +32,6 @@ spec:
             - name: DOCUMENTS_BUCKET
               value: '$(DOCUMENTS_BUCKET)'
             - name: FRONTEND_HOSTNAME
-              value: '$(BASE_DOMAIN)'
-            - name: FRONTEND_HOSTNAME
               value: 'document.$(BASE_DOMAIN)'
             - name: HTTP_SCHEME
               value: 'https'
