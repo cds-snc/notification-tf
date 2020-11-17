@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: admin 
+    app: admin
   name:  admin
   namespace: notification-canada-ca
 spec:
@@ -10,7 +10,7 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: admin 
+      app: admin
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -33,7 +33,7 @@ spec:
       containers:
         - image: admin
           imagePullPolicy: Always
-          name: admin 
+          name: admin
           env:
             - name: ADMIN_BASE_URL
               value: https://$(BASE_DOMAIN)
@@ -91,15 +91,23 @@ spec:
           ports:
             - containerPort: 6012
           readinessProbe:
-            tcpSocket:
+            httpGet:
+              path: /_status
               port: 6012
-            initialDelaySeconds: 3
+            initialDelaySeconds: 10
             periodSeconds: 3
+            timeoutSeconds: 1
+            successThreshold: 3
+            failureThreshold: 10
           livenessProbe:
-            tcpSocket:
+            httpGet:
+              path: /_status
               port: 6012
-            initialDelaySeconds: 3
+            initialDelaySeconds: 30
             periodSeconds: 3
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
