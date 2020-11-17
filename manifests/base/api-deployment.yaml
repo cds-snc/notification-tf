@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: api 
+    app: api
   name:  api
   namespace: notification-canada-ca
 spec:
   replicas: 6
   selector:
     matchLabels:
-      app: api 
+      app: api
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -105,7 +105,7 @@ spec:
       containers:
         - image: api
           imagePullPolicy: Always
-          name: api 
+          name: api
           env:
             - name: ADMIN_BASE_URL
               value: https://$(BASE_DOMAIN)
@@ -185,7 +185,7 @@ spec:
               value: '$(TWILIO_AUTH_TOKEN)'
             - name: TWILIO_FROM_NUMBER
               value: '$(TWILIO_FROM_NUMBER)'
-          resources: 
+          resources:
             requests:
               cpu: "500m"
               memory: "700Mi"
@@ -196,16 +196,22 @@ spec:
             - containerPort: 6011
           readinessProbe:
             httpGet:
-              path: /
+              path: /_status
               port: 6011
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 3
+            timeoutSeconds: 1
+            successThreshold: 3
+            failureThreshold: 10
           livenessProbe:
             httpGet:
-              path: /
+              path: /_status
               port: 6011
-            initialDelaySeconds: 5
+            initialDelaySeconds: 30
             periodSeconds: 3
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
