@@ -14,7 +14,6 @@
 ## Checklist if releasing new version:
 - [ ] I made sure that both API and Admin changes are present in Notify
 - [ ] I have checked if the docker images I am referencing exist - ex: https://gcr.io/cdssnc/notify/admin:7ddcb76
-- [ ] I have made the #team-sre team aware that I am pushing changes
 
 ## Checklist if making changes to Kubernetes:
 - [ ] I have made #team-sre team aware I am pushing changes
